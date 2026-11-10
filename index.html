@@ -1,94 +1,420 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
-    <script src="game.js" charset="utf-8"></script>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pranav Singhal | Enterprise AI, from pilot to production</title>
+<meta name="description" content="Pranav Singhal is Head of Engineering at Argo Compute. He was the first engineering hire at Hyde, where he deployed Palantir and built AI voice agents inside India's largest enterprises.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Pranav Singhal | Enterprise AI, from pilot to production">
+<meta property="og:description" content="First engineering hire at Hyde. Deployed Palantir and built AI voice agents inside India's largest enterprises. Now Head of Engineering at Argo Compute.">
+<meta property="og:url" content="https://pranav-singhal.github.io/">
+<meta property="og:image" content="https://pranav-singhal.github.io/pranav-singhal.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://pranav-singhal.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2314173A'/%3E%3Ccircle cx='22' cy='22' r='5' fill='%23F5A300'/%3E%3Ccircle cx='42' cy='22' r='5' fill='%23F5A300'/%3E%3Ccircle cx='22' cy='42' r='5' fill='%23F5A300'/%3E%3Ccircle cx='42' cy='42' r='5' fill='%23F4F5FA'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F5FA;
+    --ink:#14173A;
+    --indigo:#2B2F8F;
+    --marigold:#F5A300;
+    --slate:#565C7A;
+    --tint:#E6E8F5;
+    --line:#CDD1E6;
+    --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+    --text:"Literata",Georgia,"Times New Roman",serif;
+    --wrap:1120px;
+    --gutter:clamp(16px,4vw,40px);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--text);font-size:1.125rem;line-height:1.65;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  img{max-width:100%;display:block;}
+  a{color:var(--indigo);text-decoration-thickness:1px;text-underline-offset:0.18em;}
+  a:hover{text-decoration-thickness:2px;}
+  :focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:2px;}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter);}
+  h1,h2,h3{font-family:var(--display);margin:0;font-weight:800;letter-spacing:-0.02em;text-wrap:balance;}
+  p{margin:0 0 1em;}
+  .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--paper);padding:10px 14px;z-index:10;}
+  .skip:focus{left:12px;top:12px;}
 
+  /* ---------- top bar ---------- */
+  .top{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-top:26px;padding-bottom:26px;}
+  .top .name{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--ink);text-decoration:none;}
+  .top nav{display:flex;gap:clamp(14px,2.4vw,30px);flex-wrap:wrap;justify-content:flex-end;}
+  .top nav a{font-family:var(--display);font-weight:500;font-size:0.98rem;color:var(--ink);text-decoration:none;}
+  .top nav a:hover{text-decoration:underline;text-decoration-thickness:2px;text-decoration-color:var(--marigold);}
 
-    <!-- bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="utf-8">
-    <title></title>
-  </head>
+  /* ---------- hero ---------- */
+  .hero{padding-top:clamp(28px,6vw,84px);padding-bottom:clamp(44px,7vw,96px);}
+  .hero h1{font-size:clamp(2.55rem,7.4vw,5.9rem);line-height:0.97;max-width:15ch;}
+  .hero-body{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,5vw,72px);align-items:start;margin-top:clamp(28px,4.5vw,56px);}
+  .hero-body p{max-width:62ch;font-size:clamp(1.1rem,1.5vw,1.28rem);line-height:1.6;}
+  .hero-body .photo{width:clamp(120px,15vw,176px);height:auto;aspect-ratio:1;object-fit:cover;border-radius:6px;box-shadow:10px 10px 0 var(--marigold);}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;}
+  .btn{
+    display:inline-block;font-family:var(--display);font-weight:600;font-size:1rem;line-height:1;
+    padding:15px 22px;border-radius:4px;text-decoration:none;border:2px solid var(--ink);cursor:pointer;
+  }
+  .btn-solid{background:var(--ink);color:var(--paper);}
+  .btn-solid:hover{background:var(--indigo);border-color:var(--indigo);}
+  .btn-line{background:transparent;color:var(--ink);}
+  .btn-line:hover{background:var(--tint);}
 
-  <body>
+  /* ---------- the 40,000 calls ---------- */
+  .calls{background:var(--ink);color:var(--paper);padding:clamp(40px,6vw,80px) 0 clamp(44px,6vw,84px);}
+  .calls-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(16px,4vw,56px);align-items:end;margin-bottom:clamp(24px,3.5vw,44px);}
+  .calls h2{font-size:clamp(2rem,5vw,3.9rem);line-height:1;color:var(--marigold);}
+  .calls p{margin:0;max-width:56ch;color:#E4E6F4;}
+  #calls{display:block;width:100%;}
 
+  /* ---------- sections ---------- */
+  .section{padding-top:clamp(56px,8vw,112px);padding-bottom:clamp(8px,2vw,24px);}
+  .section > .wrap > h2{font-size:clamp(1.9rem,4vw,3.1rem);line-height:1.02;max-width:20ch;}
+  .lead{max-width:64ch;color:var(--slate);margin-top:16px;}
 
+  /* ---------- stories ---------- */
+  .story{margin-top:clamp(36px,5vw,64px);padding-top:clamp(24px,3vw,36px);border-top:3px solid var(--ink);}
+  .story h3{font-size:clamp(1.6rem,3.3vw,2.6rem);line-height:1.05;max-width:22ch;}
+  .story-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);margin-top:clamp(20px,2.6vw,32px);}
+  .part-name{font-family:var(--display);font-weight:600;font-size:0.98rem;color:var(--slate);margin:0 0 8px;}
+  .why{background:var(--tint);border-left:5px solid var(--marigold);padding:22px 24px 8px;border-radius:0 6px 6px 0;align-self:start;}
+  .why .part-name{color:var(--ink);}
+  .proof{list-style:none;margin:clamp(20px,2.6vw,30px) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 40px;}
+  .proof li{position:relative;padding-left:22px;font-size:1.02rem;line-height:1.5;}
+  .proof li::before{content:"";position:absolute;left:0;top:0.52em;width:9px;height:9px;border-radius:50%;background:var(--marigold);}
+  .proof-name{margin-top:clamp(22px,3vw,34px);margin-bottom:0;}
 
-<div class="container">
-  <div class="row " id="preloader">
-    <div class="loading">
-    please wait while I get all the bulls and cows in line.(Looks like the donkeys are already here!)  </div>
-    <div class="loader">
-    <ul class="nostyle">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      </ul>
-  </div>
-  </div>
-  <div class="row" id="game-buttons">
-    <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
-      <button type="button" id="start_game" style="display:none">Click to begin</button>
-      <button type="button" id="end_game" style="display:none">I Give Up!</button>
-      <!-- <button type="button" id="show_rules" style="display:none"> See The Rules</button> -->
-    </div>
-  </div>
-  <div class="row" >
-    <div class="col-md-12">
+  /* ---------- work ledger ---------- */
+  .ledger{margin-top:clamp(28px,4vw,48px);border-bottom:1px solid var(--line);}
+  .row{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(12px,4vw,56px);padding:clamp(22px,3vw,36px) 0;border-top:1px solid var(--line);align-items:start;}
+  .figure{font-family:var(--display);font-weight:800;font-size:clamp(2.3rem,5.4vw,4.3rem);line-height:0.95;letter-spacing:-0.03em;color:var(--indigo);}
+  .figure small{display:block;font-size:0.98rem;font-weight:600;letter-spacing:0;color:var(--slate);margin-top:10px;line-height:1.3;}
+  .row h3{font-size:1.32rem;line-height:1.2;margin-bottom:8px;letter-spacing:-0.01em;font-weight:700;}
+  .row p{max-width:62ch;margin-bottom:0.6em;}
+  .src{font-size:0.95rem;color:var(--slate);}
 
-    </div>
-    <div class="col-md-12">
+  /* ---------- background ---------- */
+  .path{margin:clamp(28px,4vw,48px) 0 0;padding:0;list-style:none;}
+  .path li{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(12px,4vw,56px);padding:20px 0;border-top:1px solid var(--line);}
+  .path li:last-child{border-bottom:1px solid var(--line);}
+  .when{font-family:var(--display);font-weight:600;color:var(--slate);font-variant-numeric:tabular-nums;}
+  .path h3{font-size:1.22rem;font-weight:700;letter-spacing:-0.01em;line-height:1.25;}
+  .path p{margin:4px 0 0;max-width:60ch;color:var(--slate);font-size:1.04rem;}
 
-        <div id="aplphabet" style="display:none">
-<h1>strike out the letters you think are absent</h1>
-          <span>A</span><span>B</span><span>C</span><span>D</span><br>
-          <span>E</span><span>F</span><span>G</span><span>H</span><br>
-          <span>I</span><span>J</span><span>K</span><span>L</span><br>
-          <span>M</span><span>N</span><span>O</span><span>P</span><br>
-          <span>Q</span><span>R</span><span>S</span><span>T</span><br>
-          <span>U</span><span>V</span><span>W</span><span>X</span><br>
-          <span>Y</span><span>Z</span>
+  .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,72px);margin-top:clamp(28px,4vw,48px);}
+  .two h3{font-size:1.32rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:12px;}
+  .plain{list-style:none;margin:0;padding:0;}
+  .plain li{padding:14px 0;border-top:1px solid var(--line);}
+  .plain li:last-child{border-bottom:1px solid var(--line);}
+  .plain strong{font-family:var(--display);font-weight:700;}
+
+  /* ---------- press ---------- */
+  .press{background:var(--tint);margin-top:clamp(56px,8vw,112px);padding:clamp(48px,7vw,96px) 0;}
+  .press h2{font-size:clamp(1.9rem,4vw,3.1rem);line-height:1.02;}
+  .press-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);margin-top:clamp(24px,3.5vw,40px);}
+  .bio{background:var(--paper);border-radius:6px;padding:clamp(20px,3vw,32px);}
+  .bio p{margin-bottom:18px;}
+  .contact{list-style:none;margin:0;padding:0;}
+  .contact li{padding:14px 0;border-top:1px solid var(--line);}
+  .contact li:first-child{border-top:0;padding-top:0;}
+  .contact span{display:block;font-family:var(--display);font-weight:600;font-size:0.98rem;color:var(--slate);}
+  .contact a{font-size:1.12rem;overflow-wrap:anywhere;}
+  #copied{font-family:var(--display);font-weight:600;font-size:0.95rem;color:var(--slate);margin-left:12px;}
+
+  footer{padding:28px 0 40px;font-size:0.95rem;color:var(--slate);}
+
+  @media (max-width:820px){
+    .hero-body{grid-template-columns:1fr;}
+    .hero-body .photo{order:-1;margin-bottom:6px;}
+    .calls-head,.story-grid,.press-grid,.two{grid-template-columns:1fr;}
+    .proof{grid-template-columns:1fr;}
+    .row,.path li{grid-template-columns:1fr;gap:8px;}
+    .top{flex-direction:column;gap:10px;}
+    .top nav{justify-content:flex-start;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  @media print{
+    .calls{background:#fff;color:#000;}
+    .calls h2{color:#000;}
+    #calls,.actions,.top nav,#copy{display:none;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#stories">Skip to the stories</a>
+
+<header class="wrap top">
+  <a class="name" href="/">Pranav Singhal</a>
+  <nav aria-label="Sections">
+    <a href="#stories">Stories</a>
+    <a href="#work">Work</a>
+    <a href="#background">Background</a>
+    <a href="#press">Press and contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <h1>I take enterprise AI out of the pilot and into production.</h1>
+    <div class="hero-body">
+      <div>
+        <p>I'm Pranav Singhal, an engineer based in Delhi. I was the first engineering hire at Hyde, a venture-backed startup that deploys Palantir inside India's largest enterprises. There I led deployments at the country's largest e&#8209;commerce and automotive companies and took Hyde through its SOC 2 audit. Before that I spent four years building sign-in and access systems at Postman. I'm now Head of Engineering at Argo Compute.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="#stories">Read the stories</a>
+          <a class="btn btn-line" href="mailto:pranavsinghal96@gmail.com">Email me</a>
         </div>
-
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div id="input_form" style="display:none">
-        <input class="inputs" type="text" maxlength="1" />
-        <input class="inputs" type="text" maxlength="1" />
-        <input class="inputs" type="text" maxlength="1" />
-        <input class="inputs" type="text" maxlength="1" />
-        <input type="submit" name="" value="get score" id="submit_word">
       </div>
-      <ol>
-
-      </ol>
+      <img class="photo" src="pranav-singhal.jpg" width="400" height="400" alt="Pranav Singhal">
     </div>
+  </section>
 
-  </div>
+  <section class="calls" aria-labelledby="calls-title">
+    <div class="wrap">
+      <div class="calls-head">
+        <h2 id="calls-title">Each dot is one call.</h2>
+        <p>The multilingual AI voice agent I built for one of India's biggest brands handled about 40,000 of them in its first two weeks, and produced a measurable lift in sales.</p>
+      </div>
+      <canvas id="calls" role="img" aria-label="A field of about 40,000 dots, one for each call the voice agent handled in its first two weeks."></canvas>
+    </div>
+  </section>
 
-</div>
+  <section class="section" id="stories">
+    <div class="wrap">
+      <h2>Two stories I can tell first-hand</h2>
+      <p class="lead">For editors and writers. Both come from work I did myself. Client names stay anonymous. Everything else I can walk through in detail.</p>
 
+      <article class="story">
+        <h3>Bringing forward deployed engineering to India</h3>
+        <div class="story-grid">
+          <div>
+            <p class="part-name">The story</p>
+            <p>A forward deployed engineer works inside the customer's business and keeps building until the software runs in production. I was the first engineering hire at Hyde, a venture-backed startup that deploys Palantir inside India's largest enterprises, and I led deployments at the country's largest e&#8209;commerce and automotive companies.</p>
+            <p>I also built a multilingual AI voice agent for one of India's biggest brands. It handled about 40,000 calls in its first two weeks and produced a measurable lift in sales.</p>
+          </div>
+          <div class="why">
+            <p class="part-name">Why now</p>
+            <p>Forward deployed engineering is one of the fastest growing roles in AI, and India is emerging as a major hub for it. Most enterprise AI pilots never reach production. This work shows what it takes to get them there.</p>
+          </div>
+        </div>
+        <p class="part-name proof-name">What I can show</p>
+        <ul class="proof">
+          <li>First engineering hire at Hyde, working on its two biggest accounts</li>
+          <li>A voice agent built on LiveKit, Sarvam and Cartesia that took about 40,000 calls in two weeks</li>
+          <li>The engineering lead on a large-scale data migration for India's largest e&#8209;commerce company</li>
+          <li>An LLM pipeline that went through recorded sales calls at the automotive company to find interested buyers the sales team had dropped</li>
+        </ul>
+      </article>
 
+      <article class="story">
+        <h3>Getting a startup through a SOC 2 audit with AI coding agents</h3>
+        <div class="story-grid">
+          <div>
+            <p class="part-name">The story</p>
+            <p>Alongside my engineering role I led Hyde's security and compliance programme and took the company through its SOC 2 Type 1 audit.</p>
+            <p>I did the hands-on work with AI coding tools: writing the infrastructure code, fixing failing security controls, and preparing for the auditor interviews.</p>
+          </div>
+          <div class="why">
+            <p class="part-name">Why now</p>
+            <p>Startups are under pressure to prove their security to enterprise customers quickly, and the industry is asking how far AI can be trusted in compliance work. This is a first-hand account of where AI speeds up an audit, and where human judgement and an independent auditor still matter.</p>
+          </div>
+        </div>
+        <p class="part-name proof-name">What I can show</p>
+        <ul class="proof">
+          <li>A completed SOC 2 Type 1 audit, run by an independent audit firm</li>
+          <li>Infrastructure code and security control fixes written with AI coding tools</li>
+          <li>The interview preparation I built for the auditor's deep-dive sessions</li>
+          <li>A first-hand view of where AI helped in the audit and where it did not</li>
+        </ul>
+      </article>
+    </div>
+  </section>
 
+  <section class="section" id="work">
+    <div class="wrap">
+      <h2>Earlier work, with public numbers</h2>
+      <div class="ledger">
+        <div class="row">
+          <div class="figure">2.7M+<small>installs of Postman's VS Code extension</small></div>
+          <div>
+            <h3>The sign-in behind Postman's VS Code extension</h3>
+            <p>At Postman I built the sign-in for the VS Code extension: a PKCE-based OAuth flow that brings secure login into the editor. Signing in is required, so every user of the extension passes through it.</p>
+            <p class="src">Sources: <a href="https://marketplace.visualstudio.com/items?itemName=Postman.postman-for-vscode">VS Code Marketplace</a> install count, November 2026. Postman reported over 1.1 million downloads in the year the extension became generally available (<a href="https://community.postman.com/t/the-postman-drop-december-edition/72615">The Postman Drop, December 2024</a>).</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="figure">4 to 20+<small>engineers on Postman's identity team</small></div>
+          <div>
+            <h3>Four years on identity and access at India's first SaaS unicorn</h3>
+            <p>I joined Postman as an intern in 2020 and left as a senior software engineer in 2024. I worked on the systems every Postman user passes through to sign in, and I helped hire more than 15 engineers as the identity team grew from 4 people to more than 20.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="figure">$4B<small>in assets tracked for Dragonfly Capital</small></div>
+          <div>
+            <h3>A portfolio platform for one of the largest VC firms in Web3</h3>
+            <p>As founder of Recursive Studios I worked directly with the CFO's office and finance team at Dragonfly Capital to build their portfolio management platform, covering data ingestion, position tracking and reporting across $4 billion in assets under management.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="section" id="background">
+    <div class="wrap">
+      <h2>Background</h2>
+      <ol class="path">
+        <li>
+          <div class="when">2026 to now</div>
+          <div><h3>Head of Engineering, Argo Compute</h3><p>Argo Compute helps banks, pharma companies and health systems run AI on their own GPUs.</p></div>
+        </li>
+        <li>
+          <div class="when">2025 to 2026</div>
+          <div><h3>Forward Deployed Engineer, Hyde</h3><p>First engineering hire. Deployed Palantir at India's largest e&#8209;commerce and automotive companies, built voice agents, and led the SOC 2 effort.</p></div>
+        </li>
+        <li>
+          <div class="when">2024 to 2025</div>
+          <div><h3>Founder, Recursive Studios</h3><p>An engineering studio that worked as the embedded product team for AI startups.</p></div>
+        </li>
+        <li>
+          <div class="when">2020 to 2024</div>
+          <div><h3>Intern to Senior Software Engineer, Postman</h3><p>Identity and access management: sign-in, single sign-on and access control.</p></div>
+        </li>
+        <li>
+          <div class="when">2018 to 2019</div>
+          <div><h3>Founding Engineer, Batch</h3><p>Built the delivery, point-of-sale and inventory platform for a regulated retail delivery startup in California.</p></div>
+        </li>
+        <li>
+          <div class="when">Education</div>
+          <div><h3>B.Sc. Physics, University of Delhi</h3><p>Sri Venkateswara College.</p></div>
+        </li>
+      </ol>
 
+      <div class="two">
+        <div>
+          <h3>Judging and mentoring</h3>
+          <ul class="plain">
+            <li><strong>Judge, ETHIndia 2019.</strong> Judged a sponsor prize and spoke at the opening ceremony of the hackathon in Bengaluru, organised by Devfolio and ETHGlobal. <a href="https://ethindia2019.devfolio.co/lineup">ETHIndia 2019 lineup</a></li>
+            <li><strong>Mentor, Google Summer of Code 2023.</strong> Mentored a contributor through Postman on Bowtie, a JSON Schema tool. <a href="https://blog.postman.com/postman-google-summer-of-code-2023/">Postman's write-up</a></li>
+            <li><strong>Finalist, ETHIndia 2018.</strong> Finalist team at the first edition of the hackathon.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Talks I can give</h3>
+          <ul class="plain">
+            <li><strong>Pilot to production.</strong> What broke when a multilingual voice agent took 40,000 calls in two weeks.</li>
+            <li><strong>AI in the audit room.</strong> What AI coding agents can and cannot do in a SOC 2 audit.</li>
+            <li><strong>The forward deployed engineer in India.</strong> What the job is, and why enterprises here are hiring for it.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="press" id="press">
+    <div class="wrap">
+      <h2>Press and contact</h2>
+      <div class="press-grid">
+        <div class="bio">
+          <p class="part-name">Short bio, ready to use</p>
+          <p id="bio">Pranav Singhal is Head of Engineering at Argo Compute. He was previously the first engineering hire at Hyde, a venture-backed startup that deploys Palantir inside India's largest enterprises, where he led deployments at the country's largest e&#8209;commerce and automotive companies, built a multilingual AI voice agent that handled about 40,000 calls in its first two weeks, and took the company through its SOC 2 Type 1 audit. Before Hyde he founded Recursive Studios and spent four years at Postman, where he built the sign-in for its VS Code extension. He studied physics at the University of Delhi and lives in Delhi.</p>
+          <button class="btn btn-line" id="copy" type="button">Copy bio</button><span id="copied" role="status" aria-live="polite"></span>
+        </div>
+        <ul class="contact">
+          <li><span>Email</span><a href="mailto:pranavsinghal96@gmail.com">pranavsinghal96@gmail.com</a></li>
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/singhalpranav/">linkedin.com/in/singhalpranav</a></li>
+          <li><span>GitHub</span><a href="https://github.com/pranav-singhal">github.com/pranav-singhal</a></li>
+          <li><span>Photo</span><a href="pranav-singhal.jpg" download>Download headshot</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
 
+<footer class="wrap">Pranav Singhal, Delhi.</footer>
 
-  </body>
+<script>
+(function(){
+  var canvas=document.getElementById('calls');
+  if(!canvas||!canvas.getContext) return;
+  var ctx=canvas.getContext('2d');
+  var TOTAL=40000, DUR=1800;
+  var cols=0, pitch=0, count=TOTAL, drawn=0, started=false, done=false, raf=0;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  function layout(){
+    var w=canvas.parentNode.clientWidth-parseFloat(getComputedStyle(canvas.parentNode).paddingLeft)-parseFloat(getComputedStyle(canvas.parentNode).paddingRight);
+    pitch = w<560 ? 2 : (w<900 ? 3 : 3.5);
+    cols=Math.floor(w/pitch);
+    var rows=Math.round(TOTAL/cols);
+    count=rows*cols;
+    var dpr=Math.min(window.devicePixelRatio||1,3);
+    canvas.style.height=(rows*pitch)+'px';
+    canvas.width=Math.round(cols*pitch*dpr);
+    canvas.height=Math.round(rows*pitch*dpr);
+    canvas.style.width=(cols*pitch)+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.fillStyle='#F5A300';
+    drawn=0;
+  }
+  function paint(upTo){
+    var s=pitch*0.56, off=(pitch-s)/2;
+    for(var i=drawn;i<upTo;i++){
+      ctx.fillRect((i%cols)*pitch+off, Math.floor(i/cols)*pitch+off, s, s);
+    }
+    drawn=upTo;
+  }
+  function run(){
+    var t0=null;
+    function step(t){
+      if(t0===null) t0=t;
+      var p=Math.min((t-t0)/DUR,1);
+      p=1-Math.pow(1-p,2.2);
+      paint(Math.floor(count*p));
+      if(p<1){raf=requestAnimationFrame(step);} else {done=true;}
+    }
+    raf=requestAnimationFrame(step);
+  }
+  layout();
+  if(reduce||!('IntersectionObserver' in window)){paint(count);done=true;started=true;}
+  else{
+    new IntersectionObserver(function(entries,obs){
+      if(entries[0].isIntersecting&&!started){started=true;run();obs.disconnect();}
+    },{threshold:0.15}).observe(canvas);
+  }
+  var lastW=window.innerWidth, timer;
+  window.addEventListener('resize',function(){
+    if(window.innerWidth===lastW) return;
+    lastW=window.innerWidth;
+    clearTimeout(timer);
+    timer=setTimeout(function(){
+      cancelAnimationFrame(raf);
+      layout();
+      if(started){paint(count);done=true;}
+    },150);
+  });
 
-      <script type="text/javascript">
-
-
-      </script>
+  var btn=document.getElementById('copy'), note=document.getElementById('copied');
+  btn.addEventListener('click',function(){
+    var text=document.getElementById('bio').textContent.trim();
+    function ok(){note.textContent='Copied';setTimeout(function(){note.textContent='';},2500);}
+    function fallback(){
+      var r=document.createRange();r.selectNodeContents(document.getElementById('bio'));
+      var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+      try{document.execCommand('copy');ok();}catch(e){note.textContent='Select the text and copy it';}
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback);}else{fallback();}
+  });
+})();
+</script>
+</body>
 </html>
